@@ -21,6 +21,7 @@ public class ResponseTrailerTests {
         );
         response.Headers.Should().ContainSingle(x => x.Name == "X-Regular-Header" && x.Value == "regular");
         response.Headers.Should().NotContain(x => x.Name == "Digest" || x.Name == "X-Processing-Status");
+        response.ContentHeaders.Should().NotContain(x => x.Name == "Digest" || x.Name == "X-Processing-Status");
     }
 
     class TrailerResponseHandler : HttpMessageHandler {
